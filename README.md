@@ -75,11 +75,8 @@ A bucket for remote state (if used)
 Terraform currently does not support cors_configuration block in aws_apigatewayv2_stage.
 ➤ After deployment, go to AWS Console → API Gateway → Routes → POST /submit → Enable CORS manually.
 Set:
-
 Allowed Origins: *
-
 Allowed Methods: OPTIONS, POST
-
 Allowed Headers: *
 
 
