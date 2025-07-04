@@ -59,7 +59,7 @@ terraform plan
 terraform apply
 Note: Ensure your AWS CLI is configured (aws configure) and IAM has sufficient permissions.
 
-📌 Pre-requisites :
+## 📌 Pre-requisites :
 
 AWS CLI configured with IAM access
 
@@ -69,7 +69,7 @@ Python installed (for Lambda)
 
 A bucket for remote state (if used)
 
-🚀 Important Notes Before Deployment :
+## 🚀 Important Notes Before Deployment :
 
 1. CORS Configuration Must Be Done Manually (Due to Terraform Limitation)
 Terraform currently does not support cors_configuration block in aws_apigatewayv2_stage.
