@@ -75,38 +75,41 @@ A bucket for remote state (if used)
 Terraform currently does not support cors_configuration block in aws_apigatewayv2_stage.
 ➤ After deployment, go to AWS Console → API Gateway → Routes → POST /submit → Enable CORS manually.
 Set:
+
 Allowed Origins: *
+
 Allowed Methods: OPTIONS, POST
+
 Allowed Headers: *
 
 
-2. Update the API Gateway URL in contact.html Manually
+3. Update the API Gateway URL in contact.html Manually
 After running terraform apply, Terraform will create a new API Gateway endpoint.
 ➤ You must copy that URL (e.g., https://xyz123.execute-api.ap-south-1.amazonaws.com/submit) and paste it inside website/contact.html as the fetch URL in the form submission code.
 
 
-3. Re-upload the Updated contact.html After Editing the API URL
+4. Re-upload the Updated contact.html After Editing the API URL
 Once you've updated the API Gateway URL inside the file, re-upload contact.html to the website/ folder.
 ➤ Either commit and push it to GitHub or re-apply using Terraform.
 
 
-4. Zip the Lambda Code Before Terraform Apply
+5. Zip the Lambda Code Before Terraform Apply
 If you update the Lambda Python code (handler.py), make sure to zip it before running Terraform:
 Compress-Archive -Path lambda/handler.py -DestinationPath lambda.zip -Force
 
 
-5. S3 Bucket Must Have Public Access Enabled
+6. S3 Bucket Must Have Public Access Enabled
 Terraform allows public read access to your S3 bucket via bucket policy and ACL settings, so that the static website can be accessed by anyone.
 
 
-6. CloudFront May Take a Few Minutes to Reflect Changes
+7. CloudFront May Take a Few Minutes to Reflect Changes
 When you update HTML files and reapply Terraform, changes may take time due to CloudFront caching.
 ➤ You can invalidate the cache manually via AWS Console if needed.
 
 
-7. DynamoDB Table Name and Lambda Environment Variable Must Match
+8. DynamoDB Table Name and Lambda Environment Variable Must Match
 Ensure that the TABLE_NAME environment variable in Lambda exactly matches the DynamoDB table name defined in Terraform (FormSubmissions in your case).
 
 
-8. All Frontend Files Must Be Inside the website/ Folder
+9. All Frontend Files Must Be Inside the website/ Folder
 Terraform only uploads HTML files from the website/ directory. Make sure to place all .html files there (index.html, contact.html, etc.).
