@@ -1,20 +1,33 @@
 import json
 import boto3
 import datetime
+import uuid
+import os
 
+# Get table name from environment variable
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('ContactSubmissions')
+table_name = os.environ['TABLE_NAME']
+table = dynamodb.Table(table_name)
 
 def lambda_handler(event, context):
     headers = {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',  # ✅ Important for CORS
+        'Access-Control-Allow-Origin': '*',  # ✅ Allow requests from any origin
         'Access-Control-Allow-Headers': '*',
         'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
     }
 
+    # ✅ Handle preflight (OPTIONS) requests
+    if event['requestContext']['http']['method'] == "OPTIONS":
+        return {
+            'statusCode': 200,
+            'headers': headers,
+            'body': json.dumps({'message': 'CORS preflight success'})
+        }
+
     try:
         body = json.loads(event['body'])
+
         name = body.get('name')
         email = body.get('email')
         message = body.get('message')
@@ -27,12 +40,15 @@ def lambda_handler(event, context):
                 'body': json.dumps({'success': False, 'message': 'Missing fields'})
             }
 
+        form_id = str(uuid.uuid4())  # Unique ID for each submission
+
         table.put_item(
             Item={
-                'email': email,
-                'timestamp': timestamp,
+                'id': form_id,
                 'name': name,
-                'message': message
+                'email': email,
+                'message': message,
+                'timestamp': timestamp
             }
         )
 
