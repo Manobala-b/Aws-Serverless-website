@@ -68,3 +68,16 @@ Terraform installed (v1.5+ recommended)
 Python installed (for Lambda)
 
 A bucket for remote state (if used)
+
+⚠️ Note on CORS Configuration
+Terraform currently does not support the cors_configuration block inside the aws_apigatewayv2_stage resource for HTTP APIs.
+Therefore, after deploying the infrastructure, you must manually enable CORS in the AWS Console by navigating to:
+
+API Gateway → Routes → POST /submit → Enable CORS
+Set:
+
+" Allowed Origins: * "
+
+" Allowed Methods: OPTIONS, POST "
+
+" Allowed Headers: * "
