@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Features | CloudForge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f9f9fb;
+      color: #222;
+    }
+    header, footer {
+      background: #fff;
+      padding: 20px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { color: #3A86FF; font-size: 1.8rem; }
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .section {
+      padding: 60px 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .feature {
+      margin-bottom: 20px;
+    }
+    .feature h3 {
+      color: #3A86FF;
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+    .feature p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CloudForge</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="section">
+    <h2>Key Features</h2>
+
+    <div class="feature">
+      <h3>1. Serverless Architecture</h3>
+      <p>Built entirely on AWS-managed services, CloudForge eliminates the need for managing servers, reducing maintenance costs and complexity.</p>
+    </div>
+
+    <div class="feature">
+      <h3>2. Secure API Access</h3>
+      <p>Data is submitted securely via API Gateway with proper IAM role-based access and CORS configuration.</p>
+    </div>
+
+    <div class="feature">
+      <h3>3. Scalable Data Storage</h3>
+      <p>Using DynamoDB ensures fast, scalable NoSQL storage that grows with the application's needs.</p>
+    </div>
+
+    <div class="feature">
+      <h3>4. Global Performance</h3>
+      <p>CloudFront CDN ensures low-latency delivery of the site content globally, with HTTPS support for secure browsing.</p>
+    </div>
+
+    <div class="feature">
+      <h3>5. Static Hosting</h3>
+      <p>The frontend is hosted on Amazon S3, a cost-efficient and reliable service for serving static websites.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 CloudForge. All rights reserved.
+  </footer>
+</body>
+</html>
